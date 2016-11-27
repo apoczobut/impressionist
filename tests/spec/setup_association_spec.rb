@@ -6,15 +6,15 @@ module Impressionist
 
     let(:mock)  { Minitest::Mock.new }
     let(:set_up) { SetupAssociation.new(mock) }
+    let(:params) {
+      [:impressionable_type, :impressionable_id, :controller_name, :request_hash, :session_hash, :action_name, :ip_address, :view_name, :referrer, :message, :user_id, :params]
+    }
 
     before do
       # expects attr_accessible to return true
       # and pass 12 arguments
       mock.
-        expect(:attr_accessible, true) do |args|
-          args.size == 12
-        end
-
+        expect(:attr_accessible, true, params)
     end
 
     describe "attr_accessible" do
